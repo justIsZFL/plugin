@@ -1,0 +1,75 @@
+apply plugin: 'maven'
+apply plugin: 'groovy'
+//apply plugin: "com.gradle.plugin-publish"
+
+
+//gradlew build --refresh-dependencies
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+//通过maven将插件发布到本地的脚本配置，根据自己的要求来修改
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri('../repo'))
+        pom.version = '1.0.3'
+        pom.artifactId = 'MyPlugin'
+        pom.groupId = 'com.plugin.cn'
+//        repository(url: "file:///Users/hjy/.m2/repository/")
+    }
+}
+dependencies {
+    compile 'com.android.tools.build:transform-api:1.5.0'
+    compile 'com.android.tools.build:gradle:3.0.1'
+    compile 'org.ow2.asm:asm:6.0'
+    compile gradleApi()
+    compile localGroovy()
+}
+
+//repositories {
+//    jcenter()
+//}
+
+//buildscript {
+//    repositories {
+//        maven {
+//            url "https://plugins.gradle.org/m2/"
+//        }
+//    }
+//    dependencies {
+//        classpath "com.gradle.publish:plugin-publish-plugin:0.9.7"
+//    }
+//}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+//version = "1.0.0"    //配置插件的版本号
+//group = "com.zfl.gradlePlugin"   //插件的群组，插件的classpath会用到
+
+//pluginBundle {
+//
+//    website = 'https://github.com/ysb33r/gradleTest'
+//    vcsUrl = 'https://github.com/ysb33r/gradleTest.git'
+//    description = 'test aop'  //插件描述
+//    tags = ['aop', 'zfl']  //插件的tag。可以通过这个在插件门户上搜索
+//
+//    plugins {
+//        greetingsPlugin {
+//            id = 'com.plugin.cn'   //插件的id，到时候apply的插件id
+//            displayName = 'zfl plugin'
+//        }
+//    }
+//}
+//dependencies {
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//
+//    implementation 'com.android.support:appcompat-v7:28.0.0'
+//    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+//}
