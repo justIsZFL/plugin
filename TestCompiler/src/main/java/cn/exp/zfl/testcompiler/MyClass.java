@@ -51,6 +51,7 @@ public class MyClass extends AbstractProcessor {
         System.out.println("======================APT启动=========================");
         for (TypeElement next : annotations) {
             System.out.println("key1:" + next.getSimpleName());
+            System.out.println("key1:" + next.getQualifiedName());
         }
         Set<? extends Element> elementsAnnotatedWith = roundEnv.getElementsAnnotatedWith(Test.class);
         for (Element next : elementsAnnotatedWith) {
@@ -72,6 +73,9 @@ public class MyClass extends AbstractProcessor {
                     .addStatement("$T.e($S,$S+\"Inject\"+$L+\"---\"+$S)", logClass, "zfl", next.getSimpleName(), "activity", path);
             //获取TypeElement的所有成员变量和成员方法
             TypeElement classElement = (TypeElement) next;//获取节点的具体类型
+            System.out.println("key3:" + classElement.getQualifiedName());
+String pkt = classElement.getQualifiedName().toString().split("."+ classElement.getSimpleName())[0];
+            System.out.println("pkt:" + pkt);
             List<? extends Element> allMembers = elementUtils.getAllMembers(classElement);
             //遍历成员变量
             for (Element member : allMembers) {
@@ -113,7 +117,7 @@ public class MyClass extends AbstractProcessor {
                     .build();
             System.out.println("name:" + typeSpec.name);
             //创建Java文件
-            JavaFile file = JavaFile.builder("cn.exp.zfl.aptdemo", typeSpec)
+            JavaFile file = JavaFile.builder(pkt, typeSpec)
                     .build();
             try {
                 file.writeTo(processingEnv.getFiler());

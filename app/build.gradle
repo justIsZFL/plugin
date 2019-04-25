@@ -30,4 +30,5 @@ dependencies {
 //    annotationProcessor ''
     implementation 'com.github.justIsZFL:aptlib:0.1'
     annotationProcessor project(':TestCompiler')
+//    annotationProcessor 'com.github.justIsZFL.plugin:TestCompiler:1.2'
 }

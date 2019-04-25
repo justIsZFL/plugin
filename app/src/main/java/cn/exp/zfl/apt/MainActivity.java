@@ -1,9 +1,7 @@
-package cn.exp.zfl.aptdemo;
+package cn.exp.zfl.apt;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import cn.zfl.aptlib.BindView;

@@ -1,4 +1,4 @@
-package cn.exp.zfl.aptdemo;
+package cn.exp.zfl.apt;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

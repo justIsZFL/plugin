@@ -1,4 +1,4 @@
-package cn.exp.zfl.aptdemo;
+package cn.exp.zfl.apt;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
