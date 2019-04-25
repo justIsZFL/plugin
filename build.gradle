@@ -8,6 +8,9 @@ buildscript {
         maven {
             url uri('repo')
         }
+        maven{
+            url 'https://jitpack.io/#justIsZFL/plugin/V1.1'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.2'
@@ -23,7 +26,9 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven{
+            url 'https://jitpack.io/'
+        }
     }
 
 }
