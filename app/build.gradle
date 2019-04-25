@@ -29,6 +29,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 //    annotationProcessor ''
     implementation 'com.github.justIsZFL:aptlib:0.1'
-    annotationProcessor project(':TestCompiler')
-//    annotationProcessor 'com.github.justIsZFL.plugin:TestCompiler:1.2'
+//    annotationProcessor project(':TestCompiler')
+    annotationProcessor 'com.github.justIsZFL.plugin:TestCompiler:1.2'
 }

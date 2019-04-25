@@ -8,6 +8,7 @@ import com.squareup.javapoet.ParameterSpec;
 import com.squareup.javapoet.TypeSpec;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -36,7 +37,6 @@ import cn.zfl.aptlib.BindView;
  */
 @AutoService(Processor.class)
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-@SupportedAnnotationTypes({"cn.zfl.aptlib.Test"})
 public class MyClass extends AbstractProcessor {
     private Elements elementUtils;
 
@@ -44,6 +44,11 @@ public class MyClass extends AbstractProcessor {
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
         elementUtils = processingEnv.getElementUtils();
+    }
+
+    @Override
+    public Set<String> getSupportedAnnotationTypes() {
+       return Collections.singleton(Test.class.getCanonicalName());
     }
 
     @Override
